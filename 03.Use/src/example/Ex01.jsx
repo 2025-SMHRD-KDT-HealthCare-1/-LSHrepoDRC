@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+//state : 바뀐값으로 출력하기 위해서 사용한다
 
 const Ex01 = () => {
     let num = 0;

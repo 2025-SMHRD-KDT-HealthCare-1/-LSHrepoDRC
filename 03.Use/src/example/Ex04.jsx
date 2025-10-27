@@ -23,7 +23,7 @@ const Ex04 = () => {
 
         <input ref={inputRef}></input>
         <button onClick={btnClick}>출력</button>
-        <h1>출력 : {inputText == comnum ? "정답입니다" : `오답입니다 답은 ${comnum}`}</h1>        
+        <h1>출력 : {}</h1>        
 
     </div>
   )
