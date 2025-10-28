@@ -1,5 +1,5 @@
-import React from 'react'
-import { useState, useRef} from 'react'
+import React, { use } from 'react'
+import { useState, useEffect,useRef} from 'react'
 const ExDiceGame = () => {
     //1. 버튼 클릭시 주사위 이미지 랜덤하게 변경(둘다)
     //2. 주사위에 숫자를 비교> 더 큰 Score 값을 +1 증가
@@ -10,7 +10,7 @@ const ExDiceGame = () => {
     const [userScore, setUserScore] = useState(0);
     const [diceCom, setDiceCom] = useState(1);
     const [diceUser, setDiceUser] = useState(1);
-   
+    const [gameOver, setGameOver] = useState('');
     const startGame = () => {
        
       if (comScore == 10 || userScore == 10)
@@ -27,8 +27,27 @@ const ExDiceGame = () => {
         } else if (userNum > comNum) {
             setUserScore(userScore + 1);
         }
-         
+        /////useEffect 이용해서 만들어 주세요
+       
+
+          
+
     }
+
+     useEffect(() => {
+          console.log("점수 변경 감지");
+              if(comScore == 10) {
+                  setGameOver("Com 승리!");
+                  alert("게임 종료! Com 승리!");
+              } else if(userScore == 10) {
+                  setGameOver("User 승리!");
+                  alert("게임 종료! User 승리!");
+              }
+              else {
+                  setGameOver('게임 진행 중...');
+              }
+              
+        }   , [comScore, userScore] );
 
     const resetGame = () => {
         setComScore(0);
@@ -54,7 +73,7 @@ const ExDiceGame = () => {
         <h1>User Score :{userScore}</h1>
       </div>
 
-      <h1>결과 : { userScore>=10 ? "User 승리" : comScore>=10  ? "Com 승리" : "게임 진행중..."}</h1>
+      <h1>결과 : {gameOver}</h1>
     </div>
 
   )
